@@ -32,7 +32,7 @@ Google解释了采用容器技术的原因：
 每个Job可以定义一些属性、元信息和优先级，优先级涉及到抢占式调度过程。Borg对Job的定义了如下4个优先级：monitoring, production, batch, and best effort(test)，其中monitoring和production属于prod workload，batch和test属于non-prod workload。高优先级可以抢占低优先级，相同优先级的Job之间不能互相抢占，另外，prod workload的Job不能被抢占，也就是说，能被抢占的只有低优先级的batch和test任务。
 
 以下是Job和Task的生命周期状态图：
- ![](./image/Brog01.png)
+ ![](./image/Borg01.png)
 
 从状态图中可见，无论是pending状态还是running状态的任务，Borg都支持它们动态更新，实时生效，这依赖于描述Job和Task所采用的BCL语言(GCL的一个变种)特性，具体原理和实现不明。
 
@@ -96,7 +96,7 @@ Borgmaster组件多副本设计。
 
 Borg的整体架构分成两部分：Borgmaster和Borglet。整体架构如下：
 
- ![](/image/Brog02.png)
+ ![](/image/Borg02.png)
 
 ### Borgmaster
 Borgmaster是整个Borg系统逻辑上的中心节点，它又分成两个部分，Borgmaster主进程和scheduler调度进程。职责划分如下：
